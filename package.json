@@ -1,11 +1,60 @@
 {
-  "name": "jikants",
-  "module": "src/index.ts",
+  "name": "@rushelasli/jikants",
+  "version": "0.1.0",
+  "description": "TypeScript/JavaScript wrapper for the Jikan API v4 with built-in typings and caching support",
+  "source": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
-  "devDependencies": {
-    "@types/bun": "latest"
+  "scripts": {
+    "prepare": "git config core.hookspath .githooks",
+    "build": "bun bun.build.js",
+    "prepublishOnly": "bun run build",
+    "test:dev": "bun test",
+    "test:coverage": "bun test --coverage",
+    "version": "auto-changelog -p -l false && git add CHANGELOG.md",
+    "format": "biome format ./src",
+    "format:fix": "biome format --write ./src",
+    "lint": "biome check ./src",
+    "lint:fix": "biome check --write --unsafe ./src"
   },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rushelasli/jikants.git"
+  },
+  "keywords": [
+    "jikan",
+    "jikan-api",
+    "jikanAPI",
+    "MyAnimeList"
+  ],
+  "author": {
+    "name": "Rushel",
+    "url": "https://github.com/rushelasli"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rushelasli/jikants/issues"
+  },
+  "homepage": "https://github.com/rushelasli/jikants#readme",
   "peerDependencies": {
-    "typescript": "^5"
+    "axios": "^1.7.9",
+    "axios-cache-interceptor": "^1.6.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@types/bun": "latest",
+    "@types/node": "22.10.2",
+    "auto-changelog": "^2.5.0",
+    "axios": "^1.13.2",
+    "axios-cache-interceptor": "^1.11.4",
+    "bun-plugin-dts": "^0.3.0",
+    "lint-staged": "^15.5.2",
+    "typescript": "5.7.3"
   }
 }

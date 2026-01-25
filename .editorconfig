@@ -1,0 +1,40 @@
+# EditorConfig is awesome: https://EditorConfig.org
+root = true
+
+# Default settings for all files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# TypeScript, JavaScript, and JSON files
+[*.{js,ts,jsx,tsx,mjs,cjs}]
+indent_style = tab
+indent_size = 2
+max_line_length = 100
+
+# JSON files
+[*.{json,jsonc}]
+indent_style = tab
+indent_size = 2
+
+# YAML files (for CI/CD configs)
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# Markdown files
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = off
+
+# Package files
+[{package.json,package-lock.json,bun.lock}]
+indent_style = space
+indent_size = 2
+
+# Config files that prefer spaces
+[{.prettierrc,.eslintrc,tsconfig.json}]
+indent_style = space
+indent_size = 2
