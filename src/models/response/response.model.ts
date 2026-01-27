@@ -1,18 +1,18 @@
-import type { Pagination } from "../base";
+import type { Pagination } from '../base'
 
 export interface JikanResponse<T> {
-  data: T;
+	data: T
 }
 
 export interface JikanResponseWithPagination<T> {
-  data: T;
-  pagination: Pagination;
+	data: T
+	pagination: Pagination
 }
 
 export interface JikanError {
-  status: number;
-  type: string;
-  message: string;
-  error: string;
-  report_url?: string;
+	status: number
+	type: string
+	message: string
+	error: string
+	report_url?: string
 }

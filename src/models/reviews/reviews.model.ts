@@ -1,1 +1,1 @@
-export type ReviewType = "anime" | "manga";
+export type ReviewType = 'anime' | 'manga'

@@ -1,4 +1,8 @@
-import type { CharacterVoiceActor, CharacterWithRole, PersonMeta } from '../base'
+import type {
+	CharacterVoiceActor,
+	CharacterWithRole,
+	PersonMeta
+} from '../base'
 
 export interface AnimeCharacter extends CharacterWithRole {
 	voice_actors: CharacterVoiceActor[]

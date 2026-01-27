@@ -1,3 +1,3 @@
 export const magazineEndpoints = {
-  list: "/magazines",
-} as const;
+	list: '/magazines'
+} as const

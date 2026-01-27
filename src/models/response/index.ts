@@ -1,2 +1,2 @@
-export * from "./response.model";
-export * from "./seasons.model";
+export * from './response.model'
+export * from './seasons.model'

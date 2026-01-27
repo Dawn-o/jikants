@@ -1,4 +1,4 @@
 export const reviewEndpoints = {
-  anime: "/reviews/anime",
-  manga: "/reviews/manga",
-} as const;
+	anime: '/reviews/anime',
+	manga: '/reviews/manga'
+} as const

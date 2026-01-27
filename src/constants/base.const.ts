@@ -5,4 +5,4 @@
  * (e.g. HTTP configuration) can import them from here.
  */
 
-export const BASE_URL = "https://api.jikan.moe/v4" as const;
+export const BASE_URL = 'https://api.jikan.moe/v4' as const

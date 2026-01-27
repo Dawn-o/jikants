@@ -1,5 +1,5 @@
-import type { Images } from '../base'
 import type { AnimeTrailer } from '../anime'
+import type { Images } from '../base'
 
 export interface WatchEpisode {
 	entry: WatchEpisodeEntry

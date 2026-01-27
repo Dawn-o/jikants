@@ -1,0 +1,43 @@
+# .gitattributes — normalize line endings
+# Enforce CRLF for source files to match Biome's formatter (lineEnding: crlf).
+# Keep Unix executable scripts and makefiles as LF to avoid execution problems on Unix-like systems.
+
+# Let Git detect binary files by default and normalize text files
+* text=auto
+
+# Enforce CRLF for common source & config files
+*.ts     text eol=crlf
+*.tsx    text eol=crlf
+*.js     text eol=crlf
+*.jsx    text eol=crlf
+*.mjs    text eol=crlf
+*.cjs    text eol=crlf
+*.json   text eol=crlf
+*.md     text eol=crlf
+*.html   text eol=crlf
+*.css    text eol=crlf
+*.scss   text eol=crlf
+*.yml    text eol=crlf
+*.yaml   text eol=crlf
+*.env    text eol=crlf
+*.lock   text eol=crlf
+*.ps1    text eol=crlf
+
+# Keep shell scripts and Makefiles LF (important for execution on Unix)
+*.sh         text eol=lf
+Makefile     text eol=lf
+Dockerfile   text eol=lf
+
+# Mark common binary files as binary (do not attempt eol normalization)
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.ico   binary
+*.pdf   binary
+*.zip   binary
+*.gz    binary
+
+# Ensure this attributes file itself is normalized to CRLF
+.gitattributes text eol=crlf

@@ -1,5 +1,5 @@
-import type { Statistics, UserMeta } from '../base'
 import type { ReviewReactions } from '../anime'
+import type { Statistics, UserMeta } from '../base'
 
 export interface MangaStatistics extends Statistics {
 	reading: number

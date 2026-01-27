@@ -1,4 +1,9 @@
-import type { CharacterMeta, CharacterRole, CharacterVoiceActor, Images } from '../base'
+import type {
+	CharacterMeta,
+	CharacterRole,
+	CharacterVoiceActor,
+	Images
+} from '../base'
 
 export interface Character {
 	mal_id: number

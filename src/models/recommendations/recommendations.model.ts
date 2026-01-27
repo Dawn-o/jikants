@@ -1,26 +1,26 @@
-import type { Images } from "../base";
+import type { Images } from '../base'
 
 export interface UserRecommendation {
-  mal_id: string;
-  entry: UserRecommendationEntry[];
-  content: string;
-  user: RecommendationUser;
+	mal_id: string
+	entry: UserRecommendationEntry[]
+	content: string
+	user: RecommendationUser
 }
 
 export interface UserRecommendationEntry {
-  mal_id: number;
-  url: string;
-  images: Images;
-  title: string;
+	mal_id: number
+	url: string
+	images: Images
+	title: string
 }
 
 export interface RecommendationUser {
-  url: string;
-  username: string;
+	url: string
+	username: string
 }
 
 export interface EntryRecommendation {
-  entry: UserRecommendationEntry;
-  url: string;
-  votes: number;
+	entry: UserRecommendationEntry
+	url: string
+	votes: number
 }
