@@ -1,15 +1,27 @@
 import { animeEndpoints } from '../endpoints/anime.endpoints'
 import type {
 	Anime,
+	AnimeCharacter,
+	AnimeEpisode,
+	AnimeEpisodeVideo,
 	AnimeFull,
+	AnimeReviewWithUser,
 	AnimeSearchParams,
+	AnimeStaff,
+	AnimeStatistics,
+	AnimeTheme,
+	AnimeUserUpdate,
+	AnimeVideos,
 	Forum,
 	ForumFilter,
+	Images,
 	JikanResponse,
 	JikanResponseWithPagination,
 	MoreInfo,
+	NamedResource,
 	News,
-	Recommendation
+	Recommendation,
+	RelationResource
 } from '../models'
 import { BaseClient } from './base.client'
 
@@ -75,8 +87,12 @@ export class AnimeClient extends BaseClient {
 	 * }
 	 * ```
 	 */
-	public async getAnimeCharacters(id: number) {
-		return this.getResource(animeEndpoints.characters, { id })
+	public async getAnimeCharacters(
+		id: number
+	): Promise<JikanResponse<AnimeCharacter[]>> {
+		return this.getResource<AnimeCharacter[]>(animeEndpoints.characters, {
+			id
+		})
 	}
 
 	/**
@@ -93,8 +109,8 @@ export class AnimeClient extends BaseClient {
 	 * }
 	 * ```
 	 */
-	public async getAnimeStaff(id: number) {
-		return this.getResource(animeEndpoints.staff, { id })
+	public async getAnimeStaff(id: number): Promise<JikanResponse<AnimeStaff[]>> {
+		return this.getResource<AnimeStaff[]>(animeEndpoints.staff, { id })
 	}
 
 	/**
@@ -111,8 +127,11 @@ export class AnimeClient extends BaseClient {
 	 * console.log(episodes.pagination);
 	 * ```
 	 */
-	public async getAnimeEpisodes(id: number, page = 1) {
-		return this.getResourceWithPagination(
+	public async getAnimeEpisodes(
+		id: number,
+		page = 1
+	): Promise<JikanResponseWithPagination<AnimeEpisode[]>> {
+		return this.getResourceWithPagination<AnimeEpisode[]>(
 			animeEndpoints.episodes,
 			{ id },
 			{ page }
@@ -133,8 +152,14 @@ export class AnimeClient extends BaseClient {
 	 * console.log(episode.data.synopsis);
 	 * ```
 	 */
-	public async getAnimeEpisodeById(id: number, episode: number) {
-		return this.getResource(animeEndpoints.episodeById, { id, episode })
+	public async getAnimeEpisodeById(
+		id: number,
+		episode: number
+	): Promise<JikanResponse<AnimeEpisode>> {
+		return this.getResource<AnimeEpisode>(animeEndpoints.episodeById, {
+			id,
+			episode
+		})
 	}
 
 	/**
@@ -202,8 +227,8 @@ export class AnimeClient extends BaseClient {
 	 * console.log(videos.data.music_videos);
 	 * ```
 	 */
-	public async getAnimeVideos(id: number) {
-		return this.getResource(animeEndpoints.videos, { id })
+	public async getAnimeVideos(id: number): Promise<JikanResponse<AnimeVideos>> {
+		return this.getResource<AnimeVideos>(animeEndpoints.videos, { id })
 	}
 
 	/**
@@ -221,8 +246,11 @@ export class AnimeClient extends BaseClient {
 	 * }
 	 * ```
 	 */
-	public async getAnimeVideosEpisodes(id: number, page = 1) {
-		return this.getResourceWithPagination(
+	public async getAnimeVideosEpisodes(
+		id: number,
+		page = 1
+	): Promise<JikanResponseWithPagination<AnimeEpisodeVideo[]>> {
+		return this.getResourceWithPagination<AnimeEpisodeVideo[]>(
 			animeEndpoints.videoEpisodes,
 			{ id },
 			{ page }
@@ -243,8 +271,8 @@ export class AnimeClient extends BaseClient {
 	 * }
 	 * ```
 	 */
-	public async getAnimePictures(id: number) {
-		return this.getResource(animeEndpoints.pictures, { id })
+	public async getAnimePictures(id: number): Promise<JikanResponse<Images[]>> {
+		return this.getResource<Images[]>(animeEndpoints.pictures, { id })
 	}
 
 	/**
@@ -261,8 +289,10 @@ export class AnimeClient extends BaseClient {
 	 * console.log(stats.data.scores);
 	 * ```
 	 */
-	public async getAnimeStatistics(id: number) {
-		return this.getResource(animeEndpoints.statistics, { id })
+	public async getAnimeStatistics(
+		id: number
+	): Promise<JikanResponse<AnimeStatistics>> {
+		return this.getResource<AnimeStatistics>(animeEndpoints.statistics, { id })
 	}
 
 	/**
@@ -318,8 +348,11 @@ export class AnimeClient extends BaseClient {
 	 * }
 	 * ```
 	 */
-	public async getAnimeUserUpdates(id: number, page = 1) {
-		return this.getResourceWithPagination(
+	public async getAnimeUserUpdates(
+		id: number,
+		page = 1
+	): Promise<JikanResponseWithPagination<AnimeUserUpdate[]>> {
+		return this.getResourceWithPagination<AnimeUserUpdate[]>(
 			animeEndpoints.userUpdates,
 			{ id },
 			{ page }
@@ -348,12 +381,12 @@ export class AnimeClient extends BaseClient {
 		page = 1,
 		preliminary?: boolean,
 		spoilers?: boolean
-	) {
+	): Promise<JikanResponseWithPagination<AnimeReviewWithUser[]>> {
 		const params: Record<string, unknown> = { page }
 		if (preliminary !== undefined) params.preliminary = preliminary
 		if (spoilers !== undefined) params.spoilers = spoilers
 
-		return this.getResourceWithPagination(
+		return this.getResourceWithPagination<AnimeReviewWithUser[]>(
 			animeEndpoints.reviews,
 			{ id },
 			params
@@ -374,8 +407,12 @@ export class AnimeClient extends BaseClient {
 	 * }
 	 * ```
 	 */
-	public async getAnimeRelations(id: number) {
-		return this.getResource(animeEndpoints.relations, { id })
+	public async getAnimeRelations(
+		id: number
+	): Promise<JikanResponse<RelationResource[]>> {
+		return this.getResource<RelationResource[]>(animeEndpoints.relations, {
+			id
+		})
 	}
 
 	/**
@@ -391,8 +428,8 @@ export class AnimeClient extends BaseClient {
 	 * console.log(themes.data.endings);
 	 * ```
 	 */
-	public async getAnimeThemes(id: number) {
-		return this.getResource(animeEndpoints.themes, { id })
+	public async getAnimeThemes(id: number): Promise<JikanResponse<AnimeTheme>> {
+		return this.getResource<AnimeTheme>(animeEndpoints.themes, { id })
 	}
 
 	/**
@@ -409,8 +446,10 @@ export class AnimeClient extends BaseClient {
 	 * }
 	 * ```
 	 */
-	public async getAnimeExternal(id: number) {
-		return this.getResource(animeEndpoints.external, { id })
+	public async getAnimeExternal(
+		id: number
+	): Promise<JikanResponse<NamedResource[]>> {
+		return this.getResource<NamedResource[]>(animeEndpoints.external, { id })
 	}
 
 	/**
@@ -427,8 +466,10 @@ export class AnimeClient extends BaseClient {
 	 * }
 	 * ```
 	 */
-	public async getAnimeStreaming(id: number) {
-		return this.getResource(animeEndpoints.streaming, { id })
+	public async getAnimeStreaming(
+		id: number
+	): Promise<JikanResponse<NamedResource[]>> {
+		return this.getResource<NamedResource[]>(animeEndpoints.streaming, { id })
 	}
 
 	/**

@@ -151,10 +151,7 @@ describe('UsersClient', () => {
 		it('should get user about', async () => {
 			const { data } = await client.getUserAbout('Nekomata1037')
 			expect(data).toBeDefined()
-			expect(Array.isArray(data)).toBe(true)
-			if (data.length > 0) {
-				expect(data[0].about).toBeDefined()
-			}
+			expect(data.about).toBeDefined()
 		})
 	})
 
@@ -164,9 +161,9 @@ describe('UsersClient', () => {
 			expect(data).toBeDefined()
 			expect(Array.isArray(data)).toBe(true)
 			if (data.length > 0) {
-				expect(data[0].entry).toBeDefined()
-				expect(data[0].increment).toBeDefined()
-				expect(data[0].date).toBeDefined()
+				expect(data[0]?.entry).toBeDefined()
+				expect(data[0]?.increment).toBeDefined()
+				expect(data[0]?.date).toBeDefined()
 			}
 		})
 
@@ -196,9 +193,9 @@ describe('UsersClient', () => {
 			expect(response.data).toBeDefined()
 			expect(Array.isArray(response.data)).toBe(true)
 			if (response.data.length > 0) {
-				expect(response.data[0].user).toBeDefined()
-				expect(response.data[0].last_online).toBeDefined()
-				expect(response.data[0].friends_since).toBeDefined()
+				expect(response.data[0]?.user).toBeDefined()
+				expect(response.data[0]?.last_online).toBeDefined()
+				expect(response.data[0]?.friends_since).toBeDefined()
 			}
 		})
 	})
@@ -248,9 +245,9 @@ describe('UsersClient', () => {
 			expect(response.data).toBeDefined()
 			expect(Array.isArray(response.data)).toBe(true)
 			if (response.data.length > 0) {
-				expect(response.data[0].mal_id).toBeDefined()
-				expect(response.data[0].name).toBeDefined()
-				expect(response.data[0].url).toBeDefined()
+				expect(response.data[0]?.mal_id).toBeDefined()
+				expect(response.data[0]?.name).toBeDefined()
+				expect(response.data[0]?.url).toBeDefined()
 			}
 		})
 	})
@@ -261,8 +258,8 @@ describe('UsersClient', () => {
 			expect(data).toBeDefined()
 			expect(Array.isArray(data)).toBe(true)
 			if (data.length > 0) {
-				expect(data[0].name).toBeDefined()
-				expect(data[0].url).toBeDefined()
+				expect(data[0]?.name).toBeDefined()
+				expect(data[0]?.url).toBeDefined()
 			}
 		})
 	})

@@ -19,8 +19,8 @@ export const isAxiosCacheInstance = (
 	instance: AxiosInstance | AxiosCacheInstance
 ): instance is AxiosCacheInstance => {
 	// `axios-cache-interceptor` augments the instance with a `cache` helper.
-	// Use a safe any-cast to avoid type errors coming from the upstream types.
-	return typeof (instance as any).cache === 'function'
+	// Use a safe type guard to check for the cache property.
+	return typeof (instance as { cache?: unknown }).cache === 'function'
 }
 
 /**

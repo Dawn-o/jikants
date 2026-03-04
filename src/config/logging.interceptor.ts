@@ -126,14 +126,16 @@ export const attachLoggingInterceptors = (
 		return Promise.reject(error)
 	}
 
-	const reqId = (instance.interceptors.request as any).use(
-		onRequest as any,
-		onRequestError as any
-	)
-	const resId = (instance.interceptors.response as any).use(
-		onResponse as any,
-		onResponseError as any
-	)
+	const reqId = (
+		instance.interceptors.request as {
+			use: (onFulfilled: unknown, onRejected: unknown) => number
+		}
+	).use(onRequest, onRequestError)
+	const resId = (
+		instance.interceptors.response as {
+			use: (onFulfilled: unknown, onRejected: unknown) => number
+		}
+	).use(onResponse, onResponseError)
 
 	// return eject function
 	return () => {

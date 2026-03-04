@@ -1,5 +1,9 @@
 import { reviewEndpoints } from '../endpoints/review.endpoints'
-import type { ReviewParams } from '../models'
+import type {
+	AnimeReviewWithUser,
+	MangaReviewWithUser,
+	ReviewParams
+} from '../models'
 import { BaseClient } from './base.client'
 
 /**
@@ -15,7 +19,11 @@ export class ReviewsClient extends BaseClient {
 	 * @param params Filter parameters
 	 */
 	public getRecentAnimeReviews(params?: Partial<ReviewParams>) {
-		return this.getResource<any[]>(reviewEndpoints.anime, {}, params)
+		return this.getResource<AnimeReviewWithUser[]>(
+			reviewEndpoints.anime,
+			{},
+			params
+		)
 	}
 
 	/**
@@ -23,6 +31,10 @@ export class ReviewsClient extends BaseClient {
 	 * @param params Filter parameters
 	 */
 	public getRecentMangaReviews(params?: Partial<ReviewParams>) {
-		return this.getResource<any[]>(reviewEndpoints.manga, {}, params)
+		return this.getResource<MangaReviewWithUser[]>(
+			reviewEndpoints.manga,
+			{},
+			params
+		)
 	}
 }

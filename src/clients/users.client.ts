@@ -1,5 +1,7 @@
 import { userEndpoints } from '../endpoints/user.endpoints'
 import type {
+	JikanResponse,
+	JikanResponseWithPagination,
 	User,
 	UserAbout,
 	UserById,
@@ -10,6 +12,7 @@ import type {
 	UserFull,
 	UserHistory,
 	UserRecommendation,
+	UserReview,
 	UserSearchParams,
 	UserStatistics,
 	UserUpdate
@@ -28,15 +31,21 @@ export class UsersClient extends BaseClient {
 	 * Get users search results
 	 * @param searchParams Filter parameters
 	 */
-	public getUsersSearch(searchParams?: Partial<UserSearchParams>) {
-		return this.getResource<User[]>(userEndpoints.search, {}, searchParams)
+	public getUsersSearch(
+		searchParams?: Partial<UserSearchParams>
+	): Promise<JikanResponseWithPagination<User[]>> {
+		return this.getResourceWithPagination<User[]>(
+			userEndpoints.search,
+			{},
+			searchParams
+		)
 	}
 
 	/**
 	 * Get user by ID
 	 * @param id User ID
 	 */
-	public getUserById(id: number) {
+	public getUserById(id: number): Promise<JikanResponse<UserById>> {
 		return this.getResource<UserById>(userEndpoints.byId, { id })
 	}
 
@@ -44,7 +53,9 @@ export class UsersClient extends BaseClient {
 	 * Get complete user resource data
 	 * @param username Username
 	 */
-	public getUserFullProfile(username: string) {
+	public getUserFullProfile(
+		username: string
+	): Promise<JikanResponse<UserFull>> {
 		return this.getResource<UserFull>(userEndpoints.fullProfile, { username })
 	}
 
@@ -52,7 +63,7 @@ export class UsersClient extends BaseClient {
 	 * Get user profile
 	 * @param username Username
 	 */
-	public getUserProfile(username: string) {
+	public getUserProfile(username: string): Promise<JikanResponse<User>> {
 		return this.getResource<User>(userEndpoints.profile, { username })
 	}
 
@@ -60,7 +71,9 @@ export class UsersClient extends BaseClient {
 	 * Get user statistics
 	 * @param username Username
 	 */
-	public getUserStatistics(username: string) {
+	public getUserStatistics(
+		username: string
+	): Promise<JikanResponse<UserStatistics>> {
 		return this.getResource<UserStatistics>(userEndpoints.statistics, {
 			username
 		})
@@ -70,7 +83,9 @@ export class UsersClient extends BaseClient {
 	 * Get user favorites
 	 * @param username Username
 	 */
-	public getUserFavorites(username: string) {
+	public getUserFavorites(
+		username: string
+	): Promise<JikanResponse<UserFavorites>> {
 		return this.getResource<UserFavorites>(userEndpoints.favorites, {
 			username
 		})
@@ -80,7 +95,7 @@ export class UsersClient extends BaseClient {
 	 * Get user updates
 	 * @param username Username
 	 */
-	public getUserUpdates(username: string) {
+	public getUserUpdates(username: string): Promise<JikanResponse<UserUpdate>> {
 		return this.getResource<UserUpdate>(userEndpoints.updates, { username })
 	}
 
@@ -88,7 +103,7 @@ export class UsersClient extends BaseClient {
 	 * Get user about
 	 * @param username Username
 	 */
-	public getUserAbout(username: string) {
+	public getUserAbout(username: string): Promise<JikanResponse<UserAbout>> {
 		return this.getResource<UserAbout>(userEndpoints.about, { username })
 	}
 
@@ -97,7 +112,10 @@ export class UsersClient extends BaseClient {
 	 * @param username Username
 	 * @param type Filter by anime or manga
 	 */
-	public getUserHistory(username: string, type?: 'anime' | 'manga') {
+	public getUserHistory(
+		username: string,
+		type?: 'anime' | 'manga'
+	): Promise<JikanResponse<UserHistory[]>> {
 		return this.getResource<UserHistory[]>(
 			userEndpoints.history,
 			{ username },
@@ -110,8 +128,11 @@ export class UsersClient extends BaseClient {
 	 * @param username Username
 	 * @param page Page number
 	 */
-	public getUserFriends(username: string, page?: number) {
-		return this.getResource<UserFriend[]>(
+	public getUserFriends(
+		username: string,
+		page?: number
+	): Promise<JikanResponseWithPagination<UserFriend[]>> {
+		return this.getResourceWithPagination<UserFriend[]>(
 			userEndpoints.friends,
 			{ username },
 			page ? { page } : undefined
@@ -123,8 +144,11 @@ export class UsersClient extends BaseClient {
 	 * @param username Username
 	 * @param page Page number
 	 */
-	public getUserReviews(username: string, page?: number) {
-		return this.getResource<any[]>(
+	public getUserReviews(
+		username: string,
+		page?: number
+	): Promise<JikanResponseWithPagination<UserReview[]>> {
+		return this.getResourceWithPagination<UserReview[]>(
 			userEndpoints.reviews,
 			{ username },
 			page ? { page } : undefined
@@ -136,8 +160,11 @@ export class UsersClient extends BaseClient {
 	 * @param username Username
 	 * @param page Page number
 	 */
-	public getUserRecommendations(username: string, page?: number) {
-		return this.getResource<UserRecommendation[]>(
+	public getUserRecommendations(
+		username: string,
+		page?: number
+	): Promise<JikanResponseWithPagination<UserRecommendation[]>> {
+		return this.getResourceWithPagination<UserRecommendation[]>(
 			userEndpoints.recommendations,
 			{ username },
 			page ? { page } : undefined
@@ -149,8 +176,11 @@ export class UsersClient extends BaseClient {
 	 * @param username Username
 	 * @param page Page number
 	 */
-	public getUserClubs(username: string, page?: number) {
-		return this.getResource<UserClub[]>(
+	public getUserClubs(
+		username: string,
+		page?: number
+	): Promise<JikanResponseWithPagination<UserClub[]>> {
+		return this.getResourceWithPagination<UserClub[]>(
 			userEndpoints.clubs,
 			{ username },
 			page ? { page } : undefined
@@ -161,7 +191,9 @@ export class UsersClient extends BaseClient {
 	 * Get user's external links
 	 * @param username Username
 	 */
-	public getUserExternal(username: string) {
+	public getUserExternal(
+		username: string
+	): Promise<JikanResponse<UserExternal[]>> {
 		return this.getResource<UserExternal[]>(userEndpoints.external, {
 			username
 		})

@@ -1,15 +1,22 @@
 import { mangaEndpoints } from '../endpoints/manga.endpoints'
 import type {
+	CharacterWithRole,
 	Forum,
 	ForumFilter,
+	Images,
 	JikanResponse,
 	JikanResponseWithPagination,
 	Manga,
 	MangaFull,
+	MangaReviewWithUser,
 	MangaSearchParams,
+	MangaStatistics,
+	MangaUserUpdate,
 	MoreInfo,
+	NamedResource,
 	News,
-	Recommendation
+	Recommendation,
+	RelationResource
 } from '../models'
 import { BaseClient } from './base.client'
 
@@ -76,8 +83,12 @@ export class MangaClient extends BaseClient {
 	 * }
 	 * ```
 	 */
-	public async getMangaCharacters(id: number) {
-		return this.getResource(mangaEndpoints.characters, { id })
+	public async getMangaCharacters(
+		id: number
+	): Promise<JikanResponse<CharacterWithRole[]>> {
+		return this.getResource<CharacterWithRole[]>(mangaEndpoints.characters, {
+			id
+		})
 	}
 
 	/**
@@ -146,8 +157,8 @@ export class MangaClient extends BaseClient {
 	 * }
 	 * ```
 	 */
-	public async getMangaPictures(id: number) {
-		return this.getResource(mangaEndpoints.pictures, { id })
+	public async getMangaPictures(id: number): Promise<JikanResponse<Images[]>> {
+		return this.getResource<Images[]>(mangaEndpoints.pictures, { id })
 	}
 
 	/**
@@ -164,8 +175,10 @@ export class MangaClient extends BaseClient {
 	 * console.log(stats.data.scores);
 	 * ```
 	 */
-	public async getMangaStatistics(id: number) {
-		return this.getResource(mangaEndpoints.statistics, { id })
+	public async getMangaStatistics(
+		id: number
+	): Promise<JikanResponse<MangaStatistics>> {
+		return this.getResource<MangaStatistics>(mangaEndpoints.statistics, { id })
 	}
 
 	/**
@@ -221,8 +234,11 @@ export class MangaClient extends BaseClient {
 	 * }
 	 * ```
 	 */
-	public async getMangaUserUpdates(id: number, page = 1) {
-		return this.getResourceWithPagination(
+	public async getMangaUserUpdates(
+		id: number,
+		page = 1
+	): Promise<JikanResponseWithPagination<MangaUserUpdate[]>> {
+		return this.getResourceWithPagination<MangaUserUpdate[]>(
 			mangaEndpoints.userUpdates,
 			{ id },
 			{ page }
@@ -251,12 +267,12 @@ export class MangaClient extends BaseClient {
 		page = 1,
 		preliminary?: boolean,
 		spoilers?: boolean
-	) {
+	): Promise<JikanResponseWithPagination<MangaReviewWithUser[]>> {
 		const params: Record<string, unknown> = { page }
 		if (preliminary !== undefined) params.preliminary = preliminary
 		if (spoilers !== undefined) params.spoilers = spoilers
 
-		return this.getResourceWithPagination(
+		return this.getResourceWithPagination<MangaReviewWithUser[]>(
 			mangaEndpoints.reviews,
 			{ id },
 			params
@@ -277,8 +293,12 @@ export class MangaClient extends BaseClient {
 	 * }
 	 * ```
 	 */
-	public async getMangaRelations(id: number) {
-		return this.getResource(mangaEndpoints.relations, { id })
+	public async getMangaRelations(
+		id: number
+	): Promise<JikanResponse<RelationResource[]>> {
+		return this.getResource<RelationResource[]>(mangaEndpoints.relations, {
+			id
+		})
 	}
 
 	/**
@@ -295,8 +315,10 @@ export class MangaClient extends BaseClient {
 	 * }
 	 * ```
 	 */
-	public async getMangaExternal(id: number) {
-		return this.getResource(mangaEndpoints.external, { id })
+	public async getMangaExternal(
+		id: number
+	): Promise<JikanResponse<NamedResource[]>> {
+		return this.getResource<NamedResource[]>(mangaEndpoints.external, { id })
 	}
 
 	/**

@@ -164,3 +164,28 @@ export interface UserById {
 	url: string
 	username: string
 }
+
+export interface UserReview {
+	mal_id: number
+	url: string
+	type: string
+	votes: number
+	date: string
+	review: string
+	episodes_watched: number | null
+	chapters_read: number | null
+	scores: {
+		overall: number
+		story: number
+		animation: number | null
+		sound: number | null
+		character: number
+		enjoyment: number
+	}
+	entry: {
+		mal_id: number
+		url: string
+		images: Images
+		title: string
+	}
+}

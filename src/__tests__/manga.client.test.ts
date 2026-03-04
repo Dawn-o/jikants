@@ -48,8 +48,8 @@ describe('MangaClient', () => {
 			expect(Array.isArray(data)).toBe(true)
 			expect(data.length).toBeGreaterThan(0)
 			if (data.length > 0) {
-				expect(data[0].character).toBeDefined()
-				expect(data[0].role).toBeDefined()
+				expect(data[0]?.character).toBeDefined()
+				expect(data[0]?.role).toBeDefined()
 			}
 		})
 	})
@@ -124,8 +124,8 @@ describe('MangaClient', () => {
 			expect(data).toBeDefined()
 			expect(Array.isArray(data)).toBe(true)
 			if (data.length > 0) {
-				expect(data[0].entry).toBeDefined()
-				expect(data[0].votes).toBeDefined()
+				expect(data[0]?.entry).toBeDefined()
+				expect(data[0]?.votes).toBeDefined()
 			}
 		})
 	})
@@ -166,8 +166,8 @@ describe('MangaClient', () => {
 			expect(data).toBeDefined()
 			expect(Array.isArray(data)).toBe(true)
 			if (data.length > 0) {
-				expect(data[0].relation).toBeDefined()
-				expect(data[0].entry).toBeDefined()
+				expect(data[0]?.relation).toBeDefined()
+				expect(data[0]?.entry).toBeDefined()
 			}
 		})
 	})
@@ -178,8 +178,8 @@ describe('MangaClient', () => {
 			expect(data).toBeDefined()
 			expect(Array.isArray(data)).toBe(true)
 			if (data.length > 0) {
-				expect(data[0].name).toBeDefined()
-				expect(data[0].url).toBeDefined()
+				expect(data[0]?.name).toBeDefined()
+				expect(data[0]?.url).toBeDefined()
 			}
 		})
 	})
@@ -211,7 +211,7 @@ describe('MangaClient', () => {
 
 		it('should search manga with type filter', async () => {
 			const params: MangaSearchParams = {
-				type: 'manga',
+				type: 'Manga',
 				limit: 3
 			}
 			const response = await client.searchManga(params)
@@ -247,9 +247,14 @@ describe('MangaClient', () => {
 			// Check if scores are in descending order
 			if (response.data.length > 1) {
 				for (let i = 0; i < response.data.length - 1; i++) {
-					const current = response.data[i].score
-					const next = response.data[i + 1].score
-					if (current !== null && next !== null) {
+					const current = response.data[i]?.score
+					const next = response.data[i + 1]?.score
+					if (
+						current !== null &&
+						next !== null &&
+						current !== undefined &&
+						next !== undefined
+					) {
 						expect(current).toBeGreaterThanOrEqual(next)
 					}
 				}
@@ -289,9 +294,10 @@ describe('MangaClient', () => {
 			try {
 				await client.getMangaById(999999999)
 				expect(true).toBe(false) // Should not reach here
-			} catch (error: any) {
+			} catch (error: unknown) {
 				expect(error).toBeDefined()
-				expect(error.response?.status).toBe(404)
+				const axiosError = error as { response?: { status?: number } }
+				expect(axiosError.response?.status).toBe(404)
 			}
 		})
 	})
