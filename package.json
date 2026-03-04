@@ -6,10 +6,24 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prepare": "git config core.hookspath .githooks",
     "build": "bun bun.build.ts",
     "prepublishOnly": "bun run build",
+    "prepublish:check": "bun run lint && bun test && bun run build && npm pack --dry-run",
     "test:dev": "bun test",
     "test:coverage": "bun test --coverage",
     "version": "auto-changelog -p -l false && git add CHANGELOG.md",
@@ -31,7 +45,13 @@
     "jikan",
     "jikan-api",
     "jikanAPI",
-    "MyAnimeList"
+    "myanimelist",
+    "anime",
+    "manga",
+    "typescript",
+    "api-wrapper",
+    "api-client",
+    "cache"
   ],
   "author": {
     "name": "Rushel",
