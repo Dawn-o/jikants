@@ -4,15 +4,25 @@
   <strong>Modern TypeScript wrapper for the Jikan API v4</strong>
 </p>
 
-Full-featured Jikan API wrapper with TypeScript support, automatic caching, and 100% endpoint coverage.
+<p align="center">
+  <img src="https://img.shields.io/npm/v/@rushelasli/jikants?style=for-the-badge&color=blue" alt="npm version">
+  <img src="https://img.shields.io/npm/dt/@rushelasli/jikants?style=for-the-badge&color=red" alt="npm downloads">
+  <img src="https://img.shields.io/github/license/rushelasli/jikants?style=for-the-badge&color=blueviolet" alt="license">
+  <img src="https://img.shields.io/badge/language-typescript-blue?style=for-the-badge" alt="typescript">
+  <img src="https://img.shields.io/badge/code%20style-Biome-60A5FA?style=for-the-badge&logo=biome" alt="biome">
+  <img src="https://img.shields.io/bundlephobia/minzip/@rushelasli/jikants?style=for-the-badge&color=darkgreen" alt="bundle size">
+</p>
+
+> Jikan API wrapper for TypeScript and Node.js with built-in typing and automatic caching.
 
 ## Features
 
-- **Fully typed** - Complete TypeScript definitions
-- **Auto caching** - 24-hour response cache (configurable)
-- **ESM + Tree shaking** - Lightweight and modern
-- **100% coverage** - All 101 Jikan API v4 endpoints
-- **Clean API** - Intuitive method names
+- Fully typed with complete TypeScript definitions
+- HTTP request caching with configurable TTL
+- ESM with tree shaking support
+- 100% endpoint coverage (all 101 Jikan API v4 endpoints)
+- Logging support for debugging
+- Lightweight and modern
 
 ## Installation
 
@@ -20,16 +30,27 @@ Full-featured Jikan API wrapper with TypeScript support, automatic caching, and 
 npm install @rushelasli/jikants axios axios-cache-interceptor
 ```
 
+or
+
+```bash
+yarn add @rushelasli/jikants axios axios-cache-interceptor
+```
+
 ## Quick Start
 
+Using the main **JikanClient**:
+
 ```ts
-import { JikanClient } from '@rushelasli/jikants';
+import { JikanClient, JikanResponse, Anime } from '@rushelasli/jikants';
 
 const jikan = new JikanClient();
 
 // Get anime by ID
-const anime = await jikan.anime.getAnimeById(1);
-console.log(anime.data.title); // "Cowboy Bebop"
+jikan.anime
+  .getAnimeById(1)
+  .then((response: JikanResponse<Anime>) => {
+    console.log(response.data.title); // "Cowboy Bebop"
+  });
 
 // Search anime
 const results = await jikan.anime.searchAnime({
@@ -46,34 +67,30 @@ const seasonal = await jikan.seasons.getSeasonNow();
 const top = await jikan.top.getTopAnime({ limit: 10 });
 ```
 
-## Available Clients
-
-All 14 clients with full endpoint coverage:
+Using a specific client, like **AnimeClient**:
 
 ```ts
-jikan.anime          // 21 endpoints - Anime data, episodes, reviews, etc.
-jikan.manga          // 14 endpoints - Manga data, characters, reviews, etc.
-jikan.characters     // 7 endpoints  - Character info, appearances, pictures
-jikan.people         // 6 endpoints  - Person info, roles, pictures
-jikan.seasons        // 4 endpoints  - Seasonal anime, current, upcoming
-jikan.schedules      // 1 endpoint   - Anime broadcast schedules
-jikan.top            // 4 endpoints  - Top anime, manga, characters, people
-jikan.genres         // 2 endpoints  - Anime/manga genres
-jikan.producers      // 3 endpoints  - Producer/studio info
-jikan.magazines      // 1 endpoint   - Magazine info
-jikan.clubs          // 5 endpoints  - Club data, members, search
-jikan.users          // 14 endpoints - User profiles, stats, favorites
-jikan.recommendations // 2 endpoints - Recent recommendations
-jikan.reviews        // 2 endpoints  - Recent reviews
-jikan.random         // 5 endpoints  - Random content
-jikan.watch          // 4 endpoints  - Watch promos/videos
+import { AnimeClient, JikanResponse, Anime } from '@rushelasli/jikants';
+
+const animeClient = new AnimeClient();
+
+animeClient
+  .getAnimeById(1)
+  .then((response: JikanResponse<Anime>) => {
+    console.log(response.data);
+  });
 ```
 
-## Configuration
+## Client Configuration
 
-### Custom Cache TTL
+### Cache Configuration
+
+Jikants uses `axios-cache-interceptor` to store request results (default TTL: 24 hours).
+To use a specific configuration, pass the `cacheOptions` argument when instantiating a client:
 
 ```ts
+import { JikanClient } from '@rushelasli/jikants';
+
 const jikan = new JikanClient({
   cacheOptions: {
     ttl: 1000 * 60 * 30, // 30 minutes
@@ -81,9 +98,14 @@ const jikan = new JikanClient({
 });
 ```
 
+For more information, check out the [axios-cache-interceptor Documentation](https://axios-cache-interceptor.js.org/).
+
 ### Custom Axios Instance
 
+Jikants uses `axios` as an HTTP client. If you need custom settings, you can provide your own axios instance:
+
 ```ts
+import { JikanClient } from '@rushelasli/jikants';
 import Axios from 'axios';
 
 const jikan = new JikanClient({
@@ -94,15 +116,43 @@ const jikan = new JikanClient({
 });
 ```
 
-### Enable Logging
+### Logging
+
+To enable logging for debugging, pass the `enableLogging` argument as `true`:
 
 ```ts
+import { JikanClient } from '@rushelasli/jikants';
+
 const jikan = new JikanClient({
   enableLogging: true
 });
 ```
 
-## Examples
+## Available Clients
+
+| Client | Endpoints | Status |
+|--------|-----------|--------|
+| **AnimeClient** | 21 endpoints | Supported |
+| **MangaClient** | 14 endpoints | Supported |
+| **CharactersClient** | 7 endpoints | Supported |
+| **PeopleClient** | 6 endpoints | Supported |
+| **SeasonsClient** | 4 endpoints | Supported |
+| **TopClient** | 4 endpoints | Supported |
+| **ClubsClient** | 5 endpoints | Supported |
+| **UsersClient** | 14 endpoints | Supported |
+| **ProducersClient** | 3 endpoints | Supported |
+| **GenresClient** | 2 endpoints | Supported |
+| **RecommendationsClient** | 2 endpoints | Supported |
+| **ReviewsClient** | 2 endpoints | Supported |
+| **RandomClient** | 5 endpoints | Supported |
+| **SchedulesClient** | 1 endpoint | Supported |
+| **MagazinesClient** | 1 endpoint | Supported |
+| **WatchClient** | 4 endpoints | Supported |
+| **JikanClient** | All clients | Supported |
+
+**Total: 101 Jikan API v4 endpoints fully covered**
+
+## Usage Examples
 
 ### Search with Filters
 
@@ -184,14 +234,10 @@ The built-in cache helps you stay within limits automatically.
 
 ## Resources
 
-- [Jikan API Docs](https://docs.api.jikan.moe/)
+- [Jikan API Documentation](https://docs.api.jikan.moe/)
 - [GitHub Repository](https://github.com/rushelasli/jikants)
-- [Report Issues](https://github.com/rushelasli/jikants/issues)
+- [npm Package](https://www.npmjs.com/package/@rushelasli/jikants)
 
-## License
+## Contributing
 
-MIT © [Rushel](https://github.com/rushelasli)
-
----
-
-**Not affiliated with MyAnimeList or Jikan. Use responsibly.**
+Found a bug or want to contribute? Check out the [GitHub repository](https://github.com/rushelasli/jikants) and feel free to submit issues or pull requests.
