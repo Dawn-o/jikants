@@ -1,10 +1,9 @@
-import { magazineEndpoints } from '../constants/endpoints'
+import { magazineEndpoints } from '../endpoints/magazine.endpoints'
 import type { Magazine, MagazineSearchParams } from '../models'
 import { BaseClient } from './base.client'
 
 /**
- * **Magazines Client**
- *
+ * **Magazines Client*	*
  * Client used to access the Magazines Endpoints:
  *
  * See also: [Jikan Documentation](https://docs.api.jikan.moe/)

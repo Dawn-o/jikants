@@ -1,4 +1,4 @@
-import { peopleEndpoints } from '../constants/endpoints'
+import { peopleEndpoints } from '../endpoints/people.endpoints'
 import type {
 	Images,
 	People,
@@ -11,8 +11,7 @@ import type {
 import { BaseClient } from './base.client'
 
 /**
- * **People Client**
- *
+ * **People Client*	*
  * Client used to access the People Endpoints:
  *
  * See also: [Jikan Documentation](https://docs.api.jikan.moe/)

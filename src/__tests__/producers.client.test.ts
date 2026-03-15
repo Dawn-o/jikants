@@ -1,5 +1,5 @@
 import { beforeAll, beforeEach, describe, expect, it } from 'bun:test'
-import { ProducersClient } from '../clients/metadata.client'
+import { ProducersClient } from '../clients/producers.client'
 import type { ProducerSearchParams } from '../models'
 
 describe('ProducersClient', () => {

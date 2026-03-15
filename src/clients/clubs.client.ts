@@ -1,4 +1,4 @@
-import { clubEndpoints } from '../constants/endpoints'
+import { clubEndpoints } from '../endpoints/club.endpoints'
 import type { ClubSearchParams } from '../models'
 import type {
 	Club,

@@ -1,4 +1,4 @@
-import { seasonEndpoints } from '../constants/endpoints'
+import { seasonEndpoints } from '../endpoints/season.endpoints'
 import type { Anime, AnimeSeason, SeasonParams, SeasonsList } from '../models'
 import { BaseClient } from './base.client'
 

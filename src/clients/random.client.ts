@@ -1,10 +1,9 @@
-import { randomEndpoints } from '../constants/endpoints'
+import { randomEndpoints } from '../endpoints/random.endpoints'
 import type { Anime, Character, Manga, People, User } from '../models'
 import { BaseClient } from './base.client'
 
 /**
- * **Random Client**
- *
+ * **Random Client*	*
  * Client used to access the Random Endpoints:
  *
  * See also: [Jikan Documentation](https://docs.api.jikan.moe/)

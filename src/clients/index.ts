@@ -4,23 +4,7 @@
  * This module exports all client classes for accessing Jikan API resources.
  * Use the `JikanClient` for a unified interface, or import individual
  * resource clients for more granular control.
- *
- * @example
- * ```typescript
- * import { JikanClient } from '@rushelasli/jikants';
- *
- * const jikan = new JikanClient();
- * const anime = await jikan.anime.getAnimeById(1);
- * ```
- *
- * @example
- * ```typescript
- * import { AnimeClient } from '@rushelasli/jikants';
- *
- * const animeClient = new AnimeClient();
- * const anime = await animeClient.getAnimeById(1);
- * ```
- */
+ * * */
 
 export { AnimeClient } from './anime.client'
 export type { ClientOptions } from './base.client'

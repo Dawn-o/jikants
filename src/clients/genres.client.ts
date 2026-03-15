@@ -1,10 +1,9 @@
-import { genreEndpoints } from '../constants/endpoints'
+import { genreEndpoints } from '../endpoints/genre.endpoints'
 import type { Genre, GenreFilter } from '../models'
 import { BaseClient } from './base.client'
 
 /**
- * **Genres Client**
- *
+ * **Genres Client*	*
  * Client used to access the Genres Endpoints:
  *
  * See also: [Jikan Documentation](https://docs.api.jikan.moe/)

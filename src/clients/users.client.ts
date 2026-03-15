@@ -1,4 +1,4 @@
-import { userEndpoints } from '../constants/endpoints'
+import { userEndpoints } from '../endpoints/user.endpoints'
 import type {
 	JikanResponse,
 	JikanResponseWithPagination,
@@ -20,8 +20,7 @@ import type {
 import { BaseClient } from './base.client'
 
 /**
- * **Users Client**
- *
+ * **Users Client*	*
  * Client used to access the Users Endpoints:
  *
  * See also: [Jikan Documentation](https://docs.api.jikan.moe/)

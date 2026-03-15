@@ -1,5 +1,5 @@
 import { beforeAll, beforeEach, describe, expect, it } from 'bun:test'
-import { ReviewsClient } from '../clients/utilities.client'
+import { ReviewsClient } from '../clients/reviews.client'
 import type { ReviewParams } from '../models'
 
 describe('ReviewsClient', () => {

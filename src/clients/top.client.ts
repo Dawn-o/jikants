@@ -1,4 +1,4 @@
-import { topEndpoints } from '../constants/endpoints'
+import { topEndpoints } from '../endpoints/top.endpoints'
 import type {
 	Anime,
 	Character,

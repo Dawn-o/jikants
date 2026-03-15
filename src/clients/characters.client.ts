@@ -1,4 +1,4 @@
-import { characterEndpoints } from '../constants/endpoints'
+import { characterEndpoints } from '../endpoints/character.endpoints'
 import type {
 	Character,
 	CharacterAnimeAppearance,
@@ -11,8 +11,7 @@ import type {
 import { BaseClient } from './base.client'
 
 /**
- * **Characters Client**
- *
+ * **Characters Client*	*
  * Client used to access the Character Endpoints:
  *
  * See also: [Jikan Documentation](https://docs.api.jikan.moe/)

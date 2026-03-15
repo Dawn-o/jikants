@@ -1,5 +1,5 @@
 import { beforeAll, beforeEach, describe, expect, it } from 'bun:test'
-import { SchedulesClient } from '../clients/utilities.client'
+import { SchedulesClient } from '../clients/schedules.client'
 import type { ScheduleParams } from '../models'
 
 describe('SchedulesClient', () => {

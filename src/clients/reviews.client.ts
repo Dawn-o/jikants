@@ -1,4 +1,4 @@
-import { reviewEndpoints } from '../constants/endpoints'
+import { reviewEndpoints } from '../endpoints/review.endpoints'
 import type {
 	AnimeReviewWithUser,
 	MangaReviewWithUser,
@@ -7,8 +7,7 @@ import type {
 import { BaseClient } from './base.client'
 
 /**
- * **Reviews Client**
- *
+ * **Reviews Client*	*
  * Client used to access the Reviews Endpoints:
  *
  * See also: [Jikan Documentation](https://docs.api.jikan.moe/)

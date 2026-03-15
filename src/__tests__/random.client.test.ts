@@ -1,5 +1,5 @@
 import { beforeAll, beforeEach, describe, expect, it } from 'bun:test'
-import { RandomClient } from '../clients/utilities.client'
+import { RandomClient } from '../clients/random.client'
 
 describe('RandomClient', () => {
 	let client: RandomClient

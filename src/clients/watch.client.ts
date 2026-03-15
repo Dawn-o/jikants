@@ -1,4 +1,4 @@
-import { watchEndpoints } from '../constants/endpoints'
+import { watchEndpoints } from '../endpoints/watch.endpoints'
 import type { WatchEpisode, WatchPromo } from '../models/watch/watch.model'
 import { BaseClient } from './base.client'
 
