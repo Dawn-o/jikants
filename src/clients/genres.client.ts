@@ -1,4 +1,4 @@
-import { genreEndpoints } from '../endpoints/genre.endpoints'
+import { genreEndpoints } from '../constants/endpoints'
 import type { Genre, GenreFilter } from '../models'
 import { BaseClient } from './base.client'
 

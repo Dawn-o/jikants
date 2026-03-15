@@ -21,6 +21,12 @@
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
 
+    // Comment stripping for bundle optimization
+    "removeComments": true,
+    "declaration": true,
+    "declarationMap": false,
+    "sourceMap": false,
+
     // Some stricter flags (disabled by default)
     "noUnusedLocals": false,
     "noUnusedParameters": false,

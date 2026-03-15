@@ -1,4 +1,4 @@
-import { producerEndpoints } from '../endpoints/producer.endpoints'
+import { producerEndpoints } from '../constants/endpoints'
 import type {
 	NamedResource,
 	Producer,

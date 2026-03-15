@@ -1,5 +1,5 @@
 import { beforeAll, beforeEach, describe, expect, it } from 'bun:test'
-import { MagazinesClient } from '../clients/magazines.client'
+import { MagazinesClient } from '../clients/utilities.client'
 import type { MagazineSearchParams } from '../models'
 
 describe('MagazinesClient', () => {

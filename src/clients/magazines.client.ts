@@ -1,4 +1,4 @@
-import { magazineEndpoints } from '../endpoints/magazine.endpoints'
+import { magazineEndpoints } from '../constants/endpoints'
 import type { Magazine, MagazineSearchParams } from '../models'
 import { BaseClient } from './base.client'
 

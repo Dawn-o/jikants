@@ -1,4 +1,4 @@
-import { reviewEndpoints } from '../endpoints/review.endpoints'
+import { reviewEndpoints } from '../constants/endpoints'
 import type {
 	AnimeReviewWithUser,
 	MangaReviewWithUser,

@@ -1,4 +1,4 @@
-import { recommendationEndpoints } from '../endpoints/recommendation.endpoints'
+import { recommendationEndpoints } from '../constants/endpoints'
 import type { UserRecommendation } from '../models'
 import { BaseClient } from './base.client'
 

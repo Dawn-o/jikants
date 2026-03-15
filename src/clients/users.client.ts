@@ -1,4 +1,4 @@
-import { userEndpoints } from '../endpoints/user.endpoints'
+import { userEndpoints } from '../constants/endpoints'
 import type {
 	JikanResponse,
 	JikanResponseWithPagination,

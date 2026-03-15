@@ -1,4 +1,4 @@
-import { peopleEndpoints } from '../endpoints/people.endpoints'
+import { peopleEndpoints } from '../constants/endpoints'
 import type {
 	Images,
 	People,

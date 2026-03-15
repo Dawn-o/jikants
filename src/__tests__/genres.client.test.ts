@@ -1,5 +1,5 @@
 import { beforeAll, beforeEach, describe, expect, it } from 'bun:test'
-import { GenresClient } from '../clients/genres.client'
+import { GenresClient } from '../clients/utilities.client'
 import type { GenreFilter } from '../models'
 
 describe('GenresClient', () => {

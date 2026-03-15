@@ -1,5 +1,5 @@
 import { beforeAll, beforeEach, describe, expect, it } from 'bun:test'
-import { RecommendationsClient } from '../clients/recommendations.client'
+import { RecommendationsClient } from '../clients/utilities.client'
 
 describe('RecommendationsClient', () => {
 	let client: RecommendationsClient

@@ -1,4 +1,4 @@
-import { characterEndpoints } from '../endpoints/character.endpoints'
+import { characterEndpoints } from '../constants/endpoints'
 import type {
 	Character,
 	CharacterAnimeAppearance,

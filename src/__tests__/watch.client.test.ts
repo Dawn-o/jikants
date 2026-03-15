@@ -1,5 +1,5 @@
 import { beforeAll, beforeEach, describe, expect, it } from 'bun:test'
-import { WatchClient } from '../clients/watch.client'
+import { WatchClient } from '../clients/metadata.client'
 import type { WatchPromosParams } from '../models'
 
 describe('WatchClient', () => {
