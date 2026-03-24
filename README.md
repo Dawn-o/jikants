@@ -38,5 +38,4 @@ console.log(anime.data.title);
 
 ## Documentation
 
-For full documentation, examples, and API reference, visit:
-https://github.com/rushelasli/jikants
+View the full documentation and examples [on GitHub.](https://github.com/rushelasli/jikants/tree/main/docs)
